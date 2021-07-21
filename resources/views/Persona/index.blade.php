@@ -1,4 +1,4 @@
-<H1>PERSONAS</H1>
+<h1>PERSONAS</h1>
 
 <div class="container">
     <div class="table-responsive">
