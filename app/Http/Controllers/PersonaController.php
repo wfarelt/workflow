@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Persona;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Storage;
+
 class PersonaController extends Controller
 {
     /**
@@ -15,7 +17,7 @@ class PersonaController extends Controller
     public function index()
     {
         //
-        $datos['personas']=Persona::paginate(5);
+        $datos['personas']=Persona::paginate(3);
         return view('Persona.index',$datos);
     }
 
@@ -40,6 +42,23 @@ class PersonaController extends Controller
     {
         //
         //$datosPersona = request()->all();
+
+        $campos=[
+            'Nombre'=>'required|string|max:100',
+            'Email'=>'required|email',
+            'Telefono'=>'required|string|max:100',
+            'Foto'=>'required|max:10000|mimes:jpeg,png,jpg',
+        ];
+
+
+        $mensaje=[
+            'required'=>'El :attribute es requerido',
+            'Foto.required'=>'La foto es requerida',
+        ];
+
+        $this->validate($request, $campos, $mensaje);
+
+
         $datosPersona = request()->except('_token');
 
         if($request->hasFile('Foto')){
@@ -48,7 +67,8 @@ class PersonaController extends Controller
 
         Persona::insert($datosPersona);
         
-        return response()->json($datosPersona);
+        //return response()->json($datosPersona);
+        return redirect('persona')->with('mensaje','Registro exitoso');
     }
 
     /**
@@ -68,9 +88,11 @@ class PersonaController extends Controller
      * @param  \App\Models\Persona  $persona
      * @return \Illuminate\Http\Response
      */
-    public function edit(Persona $persona)
+    public function edit($id)
     {
         //
+        $persona = Persona::findOrFail($id);
+        return view('persona.edit', compact('persona'));
     }
 
     /**
@@ -80,9 +102,49 @@ class PersonaController extends Controller
      * @param  \App\Models\Persona  $persona
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Persona $persona)
+    public function update(Request $request, $id)
     {
         //
+
+        $campos=[
+            'Nombre'=>'required|string|max:100',
+            'Email'=>'required|email',
+            'Telefono'=>'required|string|max:100',
+        ];
+
+
+        $mensaje=[
+            'required'=>'El :attribute es requerido',
+        ];
+
+        if($request->hasFile('Foto')){
+            $campos=[
+                'Foto'=>'required|max:10000|mimes:jpeg,png,jpg',
+            ];
+    
+            $mensaje=[
+                'Foto.required'=>'La foto es requerida',
+            ];
+        }
+
+        $this->validate($request, $campos, $mensaje);
+
+
+        $datosPersona = $request->except(['_token','_method']);
+
+        if($request->hasFile('Foto')){
+            $persona = Persona::findOrFail($id);
+            Storage::delete('public/'.$persona->Foto);
+            $datosPersona['Foto']=$request->file('Foto')->store('uploads','public');
+        };
+
+        Persona::where('id','=',$id)->update($datosPersona);
+
+        $persona = Persona::findOrFail($id);
+        //return view('persona.edit', compact('persona'));
+        return redirect('persona')->with('mensaje','Registro modificado');
+
+
     }
 
     /**
@@ -94,7 +156,12 @@ class PersonaController extends Controller
     public function destroy($id)
     {
         //
-        Persona::destroy($id);
-        return redirect('persona');
+        $persona = Persona::findOrFail($id);
+
+        if(Storage::delete('public/'.$persona->Foto)){
+            Persona::destroy($id);
+        }
+        
+        return redirect('persona')->with('mensaje','Registro borrado');
     }
 }

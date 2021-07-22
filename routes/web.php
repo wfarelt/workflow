@@ -15,7 +15,8 @@ use App\Http\Controllers\PersonaController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    //return view('welcome');
+    return view('auth.login');
 });
 
 /*
@@ -26,4 +27,11 @@ Route::get('/persona', function () {
 Route::get('/persona/create',[PersonaController::class,'create']);
 */
 
-Route::resource('persona', PersonaController::class);
+Route::resource('persona', PersonaController::class)->middleware('auth');
+Auth::routes(['register'=>false, 'reset'=>false]);
+
+Route::get('/home', [PersonaController::class, 'index'])->name('home');
+
+Route::group(['middleware'=>'auth'], function(){
+    Route::get('/', [PersonaController::class, 'index'])->name('home');
+});
