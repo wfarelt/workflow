@@ -28,7 +28,7 @@ Route::get('/persona/create',[PersonaController::class,'create']);
 */
 
 Route::resource('persona', PersonaController::class)->middleware('auth');
-Auth::routes(['register'=>false, 'reset'=>false]);
+Auth::routes(['register'=>true, 'reset'=>false]);
 
 Route::get('/home', [PersonaController::class, 'index'])->name('home');
 

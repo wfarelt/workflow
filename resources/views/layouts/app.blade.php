@@ -33,10 +33,51 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('persona.index') }}">{{ __('Personas') }}</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Administración
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('persona.index') }}">{{ __('Personas') }}</a>
+                                <a class="dropdown-item" href="#">Cargo</a>
+                                <a class="dropdown-item" href="#">Departamento</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Usuario</a>
+                                <a class="dropdown-item" href="#">Privilegios</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Bitacora</a>
+                            </div>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Workflow
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Flujos</a>
+                                <a class="dropdown-item" href="#">Estados</a>
+                                <a class="dropdown-item" href="#">Tareas</a>                               
+                            </div>
+                        </li>
+                        
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Reportes
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Tareas</a>                             
+                            </div>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a class="nav-link" href="#" >
+                                ¿Quienes somos?
+                            </a>
+                        </li>
+
+                        
+
                     </ul>
+                    
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
