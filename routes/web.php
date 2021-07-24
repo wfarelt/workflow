@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PersonaController;
+use App\Http\Controllers\CargoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,9 @@ Route::resource('persona', PersonaController::class)->middleware('auth');
 Auth::routes(['register'=>true, 'reset'=>false]);
 
 Route::get('/home', [PersonaController::class, 'index'])->name('home');
+
+//Route::resource('cargos', CargoController::class)->middleware('auth');
+Route::resource('cargos', CargoController::class);
 
 Route::group(['middleware'=>'auth'], function(){
     Route::get('/', [PersonaController::class, 'index'])->name('home');

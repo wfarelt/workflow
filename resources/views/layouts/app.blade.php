@@ -39,7 +39,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('persona.index') }}">{{ __('Personas') }}</a>
-                                <a class="dropdown-item" href="#">Cargo</a>
+                                <a class="dropdown-item" href="{{ route('cargos.index') }}">{{ __('Cargos') }}</a>
                                 <a class="dropdown-item" href="#">Departamento</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Usuario</a>
@@ -73,9 +73,6 @@
                                 ¿Quienes somos?
                             </a>
                         </li>
-
-                        
-
                     </ul>
                     
 
@@ -118,8 +115,10 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('content')
+        <main class="py-4 bg-secondary">
+            <div class="container bg-light">
+                @yield('content')
+            </div>
         </main>
     </div>
 </body>
