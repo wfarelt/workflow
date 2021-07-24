@@ -40,7 +40,7 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('persona.index') }}">{{ __('Personas') }}</a>
                                 <a class="dropdown-item" href="{{ route('cargos.index') }}">{{ __('Cargos') }}</a>
-                                <a class="dropdown-item" href="#">Departamento</a>
+                                <a class="dropdown-item" href="{{ route('departamentos.index') }}">{{ __('Departamentos') }}</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Usuario</a>
                                 <a class="dropdown-item" href="#">Privilegios</a>
