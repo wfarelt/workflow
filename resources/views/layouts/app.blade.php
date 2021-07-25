@@ -53,9 +53,9 @@
                                 Workflow
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('workflow-estados.index') }}">{{ __('Estados') }}</a>
+                                <a class="dropdown-item" href="{{ route('workflow-estados.index') }}">{{ __('Estados') }}</a>
+                                <a class="dropdown-item" href="{{ route('workflow-acciones.index') }}">{{ __('Acciones') }}</a>
                                 <a class="dropdown-item" href="#">Flujos</a>
-                                <a class="dropdown-item" href="#">Estados</a>
                                 <a class="dropdown-item" href="#">Tareas</a>                               
                             </div>
                         </li>

@@ -5,6 +5,7 @@ use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\CargoController;
 use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\WorkflowEstadoController;
+use App\Http\Controllers\WorkflowAccioneController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,7 @@ Route::get('/home', [PersonaController::class, 'index'])->name('home');
 Route::resource('cargos', CargoController::class);
 Route::resource('departamentos', DepartamentoController::class);
 Route::resource('workflow-estados', WorkflowEstadoController::class);
+Route::resource('workflow-acciones', WorkflowAccioneController::class);
 
 Route::group(['middleware'=>'auth'], function(){
     Route::get('/', [PersonaController::class, 'index'])->name('home');
