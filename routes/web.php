@@ -6,6 +6,7 @@ use App\Http\Controllers\CargoController;
 use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\WorkflowEstadoController;
 use App\Http\Controllers\WorkflowAccioneController;
+use App\Http\Controllers\WorkflowTareaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,17 +33,22 @@ Route::get('/persona/create',[PersonaController::class,'create']);
 */
 
 
-Route::resource('persona', PersonaController::class)->middleware('auth');
+//MODULO SECCION
+
 Auth::routes(['register'=>true, 'reset'=>false]);
-
 Route::get('/home', [PersonaController::class, 'index'])->name('home');
-
-//Route::resource('cargos', CargoController::class)->middleware('auth');
-Route::resource('cargos', CargoController::class);
-Route::resource('departamentos', DepartamentoController::class);
-Route::resource('workflow-estados', WorkflowEstadoController::class);
-Route::resource('workflow-acciones', WorkflowAccioneController::class);
-
 Route::group(['middleware'=>'auth'], function(){
     Route::get('/', [PersonaController::class, 'index'])->name('home');
 });
+
+//MODULO ADMINISTRACION
+//Route::resource('cargos', CargoController::class)->middleware('auth');
+Route::resource('persona', PersonaController::class)->middleware('auth');
+Route::resource('cargos', CargoController::class);
+Route::resource('departamentos', DepartamentoController::class);
+
+//MODULO WORKFLOW
+Route::resource('workflow-estados', WorkflowEstadoController::class);
+Route::resource('workflow-acciones', WorkflowAccioneController::class);
+Route::resource('workflow-tareas', WorkflowTareaController::class);
+
