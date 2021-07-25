@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\CargoController;
 use App\Http\Controllers\DepartamentoController;
+use App\Http\Controllers\WorkflowEstadoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,7 @@ Route::get('/home', [PersonaController::class, 'index'])->name('home');
 //Route::resource('cargos', CargoController::class)->middleware('auth');
 Route::resource('cargos', CargoController::class);
 Route::resource('departamentos', DepartamentoController::class);
+Route::resource('workflow-estados', WorkflowEstadoController::class);
 
 Route::group(['middleware'=>'auth'], function(){
     Route::get('/', [PersonaController::class, 'index'])->name('home');
