@@ -7,6 +7,7 @@ use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\WorkflowEstadoController;
 use App\Http\Controllers\WorkflowAccioneController;
 use App\Http\Controllers\WorkflowTareaController;
+use App\Http\Controllers\WorkflowController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,9 @@ use App\Http\Controllers\WorkflowTareaController;
 
 Route::get('/', function () {
     //return view('welcome');
+
     return view('auth.login');
+    
 });
 
 /*
@@ -51,4 +54,5 @@ Route::resource('departamentos', DepartamentoController::class);
 Route::resource('workflow-estados', WorkflowEstadoController::class);
 Route::resource('workflow-acciones', WorkflowAccioneController::class);
 Route::resource('workflow-tareas', WorkflowTareaController::class);
+Route::resource('workflows', WorkflowController::class);
 

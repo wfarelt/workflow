@@ -56,7 +56,7 @@
                                 <a class="dropdown-item" href="{{ route('workflow-estados.index') }}">{{ __('Estados') }}</a>
                                 <a class="dropdown-item" href="{{ route('workflow-acciones.index') }}">{{ __('Acciones') }}</a>
                                 <a class="dropdown-item" href="{{ route('workflow-tareas.index') }}">{{ __('Tareas') }}</a>
-                                <a class="dropdown-item" href="#">Flujos</a>
+                                <a class="dropdown-item" href="{{ route('workflows.index') }}">{{ __('Workflows') }}</a>
                                 
                             </div>
                         </li>
