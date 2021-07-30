@@ -26,7 +26,11 @@
                         </div>
                         <div class="form-group">
                             <strong>Estado:</strong>
-                            {{ $workflowAccione->estado }}
+                            @if($workflowAccione->estado == "1")
+                                HABILITADO
+                            @else
+                                NO HABILITADO
+                            @endif
                         </div>
 
                     </div>

@@ -36,10 +36,10 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Workflow Estado Id</th>
-										<th>Siguiente Estado Id</th>
-										<th>Workflow Accione Id</th>
-										<th>Workflow Tarea Id</th>
+										<th>Tipo de Tarea</th>
+										<th>Estado actual</th>
+										<th>Estado siguiente</th>
+										<th>Acción</th>
 
                                         <th></th>
                                     </tr>
@@ -48,11 +48,12 @@
                                     @foreach ($workflows as $workflow)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
-											<td>{{ $workflow->workflow_estado_id }}</td>
+                    
+                                            <td>{{ $workflow->workflowTarea->descripcion  }}</td>
+											<td>{{ $workflow->workflowEstado->descripcion }}</td>
 											<td>{{ $workflow->siguiente_estado_id }}</td>
-											<td>{{ $workflow->workflow_accione_id }}</td>
-											<td>{{ $workflow->workflow_tarea_id }}</td>
+											<td>{{ $workflow->workflowAccione->descripcion }}</td>
+											
 
                                             <td>
                                                 <form action="{{ route('workflows.destroy',$workflow->id) }}" method="POST">

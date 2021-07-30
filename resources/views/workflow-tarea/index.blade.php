@@ -48,7 +48,13 @@
                                             <td>{{ ++$i }}</td>
                                             
 											<td>{{ $workflowTarea->descripcion }}</td>
-											<td>{{ $workflowTarea->estado }}</td>
+											<td>
+                                            @if ($workflowTarea->estado == "1")
+                                                HABILITADO
+                                            @else
+                                                NO HABILITADO
+                                            @endif
+                                            </td>
 
                                             <td>
                                                 <form action="{{ route('workflow-tareas.destroy',$workflowTarea->id) }}" method="POST">

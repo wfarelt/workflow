@@ -63,6 +63,7 @@ class Workflow extends Model
     public function workflowTarea()
     {
         return $this->hasOne('App\Models\WorkflowTarea', 'id', 'workflow_tarea_id');
+    
     }
     
 

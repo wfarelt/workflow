@@ -8,7 +8,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('estado') }}
-            {{ Form::text('estado', $workflowAccione->estado, ['class' => 'form-control' . ($errors->has('estado') ? ' is-invalid' : ''), 'placeholder' => 'Estado']) }}
+            {{ Form::select('estado', array("1"=>"HABILITADO","2"=>"NO HABILITADO"), $workflowAccione->estado, ['class' => 'form-control' . ($errors->has('estado') ? ' is-invalid' : ''), 'placeholder' => 'Seleccionar estado']) }}
             {!! $errors->first('estado', '<div class="invalid-feedback">:message</p>') !!}
         </div>
 

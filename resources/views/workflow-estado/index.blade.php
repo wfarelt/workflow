@@ -48,7 +48,13 @@
                                             <td>{{ ++$i }}</td>
                                             
 											<td>{{ $workflowEstado->descripcion }}</td>
-											<td>{{ $workflowEstado->estado }}</td>
+											<td>
+                                                @if($workflowEstado->estado == "1")
+                                                    HABILITADO
+                                                @else
+                                                    NO HABILITADO
+                                                @endif
+                                            </td>
 
                                             <td>
                                                 <form action="{{ route('workflow-estados.destroy',$workflowEstado->id) }}" method="POST">

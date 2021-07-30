@@ -33,6 +33,10 @@ class WorkflowTarea extends Model
      */
     protected $fillable = ['descripcion','estado'];
 
+    public function workflow()
+    {
+        return $this->hasMany(Workflow::class);
+    }
 
 
 }

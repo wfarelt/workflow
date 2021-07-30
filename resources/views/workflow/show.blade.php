@@ -21,20 +21,20 @@
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Workflow Estado Id:</strong>
-                            {{ $workflow->workflow_estado_id }}
+                            <strong>Workflow Estado:</strong>
+                            {{ $workflow->workflowEstado->descripcion }}
                         </div>
                         <div class="form-group">
                             <strong>Siguiente Estado Id:</strong>
                             {{ $workflow->siguiente_estado_id }}
                         </div>
                         <div class="form-group">
-                            <strong>Workflow Accione Id:</strong>
-                            {{ $workflow->workflow_accione_id }}
+                            <strong>Workflow Accione:</strong>
+                            {{ $workflow->workflowAccione->descripcion }}
                         </div>
                         <div class="form-group">
-                            <strong>Workflow Tarea Id:</strong>
-                            {{ $workflow->workflow_tarea_id }}
+                            <strong>Workflow Tarea:</strong>
+                            {{ $workflow->workflowTarea->descripcion }}
                         </div>
 
                     </div>

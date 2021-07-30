@@ -40,10 +40,12 @@ class WorkflowController extends Controller
     public function create()
     {
         $workflow = new Workflow();
+        $workflow_estados = WorkflowEstado::pluck('descripcion','id');
+        $workflow_acciones = WorkflowAccione::pluck('descripcion','id');
         $workflow_tareas = WorkflowTarea::pluck('descripcion','id');
-        return view('workflow.create', compact('workflow','workflow_tareas'));
+        return view('workflow.create', compact('workflow', 'workflow_tareas', 'workflow_estados', 'workflow_acciones'));
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
