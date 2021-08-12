@@ -45,11 +45,14 @@ class TareaWorkflowEstadoController extends Controller
      */
     public function store(Request $request)
     {
+        
         request()->validate(TareaWorkflowEstado::$rules);
+
+
 
         $tareaWorkflowEstado = TareaWorkflowEstado::create($request->all());
 
-        return redirect()->route('tarea-workflow-estados.index')
+        return redirect()->route('tareas.show', $request->tarea_id)
             ->with('success', 'TareaWorkflowEstado created successfully.');
     }
 

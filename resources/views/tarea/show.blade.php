@@ -7,7 +7,8 @@
 @section('content')
     <section class="content container-fluid">
         <div class="row">
-            <div class="col-md-12">
+
+            <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
@@ -47,16 +48,45 @@
                                 <br>
                             @endforeach
                         </div>
-
-                        <div>
-                            @foreach ($workflows as $workflow)
-                                <button class="btn btn-success">{{$workflow->workflowAccione->descripcion}}</button>
-                            @endforeach
-                        </div>
-
                     </div>
                 </div>
+            </div>
+
+            <div class="col-md-4">                
+                <div class="card">
+                            <form method="POST" action="{{ route('tarea-workflow-estados.store') }}"  role="form" enctype="multipart/form-data">
+                                @csrf
+
+                                <div class="box box-info padding-1">
+                                    <div class="box-body">
+                                        
+                                    <div class="form-group">
+                                        {{ Form::label('descripcion') }}
+                                        {{ Form::text('descripcion', null, ['class' => 'form-control' . ($errors->has('descripcion') ? ' is-invalid' : ''), 'placeholder' => 'Descripcion']) }}
+                                        {!! $errors->first('descripcion', '<div class="invalid-feedback">:message</p>') !!}
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        
+                                        {{ Form::hidden('tarea_id',  $tarea->id, ['class' => 'form-control' . ($errors->has('tarea_id') ? ' is-invalid' : ''), 'placeholder' => 'Tarea Id']) }}
+                                        
+                                    </div>        
+
+                                    </div>
+                                    <div class="box-footer mt20">
+                                        @foreach ($workflows as $workflow)
+                                            <button name="workflow_estado_id" type="submit" value="{{$workflow->siguiente_estado_id}}"  class="btn btn-success">{{$workflow->workflowAccione->descripcion}}</button>                                            
+                                        @endforeach 
+                                    </div>
+                                </div>
+
+                               
+
+                            </form>
+                        </div>
             </div>
         </div>
     </section>
 @endsection
+
+

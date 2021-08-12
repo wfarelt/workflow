@@ -49,18 +49,20 @@ class TareaController extends Controller
      */
     public function store(Request $request)
     {
+        $descripcion = request()->descripcion;
         request()->validate(Tarea::$rules);
 
         $tarea = Tarea::create($request->all());
 
-        $workflow = Workflow::where('workflow_tarea_id', $tarea->workflow_tarea_id)->first();
+        $workflow = Workflow::where('workflow_tarea_id', $tarea->workflow_tarea_id)->first(); /** Buscamos el primer estado de la tarea creada  */
         $tareaWorkflowEstado = new TareaWorkflowEstado();
         $tareaWorkflowEstado->workflow_estado_id = $workflow->workflow_estado_id;
-        $tareaWorkflowEstado->descripcion = "Hola";
+        $tareaWorkflowEstado->descripcion = $descripcion;
         $tareaWorkflowEstado->tarea_id = $tarea->id;
         $tareaWorkflowEstado->save();
         
-        return redirect()->route('tarea-workflow-estados.edit',$tareaWorkflowEstado->id);
+        return redirect()->route('tareas.index')
+            ->with('success', 'Tarea created successfully.');
 
         
     }
@@ -75,10 +77,11 @@ class TareaController extends Controller
     public function show($id)
     {
         $tarea = Tarea::find($id);
+        
         $tarea_workflow_estados = TareaWorkflowEstado::where('tarea_id', $tarea->id)->get();
+        
         $tarea_workflow_estado_last = $tarea_workflow_estados->last();
 
-        
         $workflows = Workflow::where('workflow_tarea_id', $tarea->workflow_tarea_id)->where('workflow_estado_id', $tarea_workflow_estado_last->workflow_estado_id )->get();
 
         return view('tarea.show', compact('tarea','tarea_workflow_estados','workflows','tarea_workflow_estado_last'));
