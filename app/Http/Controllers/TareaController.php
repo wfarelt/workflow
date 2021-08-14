@@ -7,6 +7,7 @@ use App\Models\Workflow;
 use App\Models\WorkflowTarea;
 use App\Models\TareaWorkflowEstado;
 
+
 use Illuminate\Http\Request;
 
 /**
@@ -50,6 +51,7 @@ class TareaController extends Controller
     public function store(Request $request)
     {
         $descripcion = request()->descripcion;
+        $user_id = request()->user_id;
         request()->validate(Tarea::$rules);
 
         $tarea = Tarea::create($request->all());
@@ -59,6 +61,7 @@ class TareaController extends Controller
         $tareaWorkflowEstado->workflow_estado_id = $workflow->workflow_estado_id;
         $tareaWorkflowEstado->descripcion = $descripcion;
         $tareaWorkflowEstado->tarea_id = $tarea->id;
+        $tareaWorkflowEstado->user_id = $user_id;
         $tareaWorkflowEstado->save();
         
         return redirect()->route('tareas.index')

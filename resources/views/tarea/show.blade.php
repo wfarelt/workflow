@@ -34,14 +34,16 @@
                             @foreach ($tarea_workflow_estados as $tarea_workflow_estado)
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="card-tittle">
+                                        <h3 class="card-tittle">
                                             {{ $tarea_workflow_estado->descripcion }}
-                                        </h5>
+                                        </h3>
+                                        <br>
                                         <p class="card-text">
                                             Estado: {{ $tarea_workflow_estado->workflowEstado->descripcion }}
-                                        </p>
-                                        <p class="card-text">
+                                            <br>
                                             Fecha: {{ $tarea_workflow_estado->created_at }}
+                                            <br>
+                                            Creado por: {{ $tarea_workflow_estado->user->name }}
                                         </p>
                                     </div>
                                 </div>
@@ -67,8 +69,8 @@
                                     </div>
                                     
                                     <div class="form-group">
-                                        
                                         {{ Form::hidden('tarea_id',  $tarea->id, ['class' => 'form-control' . ($errors->has('tarea_id') ? ' is-invalid' : ''), 'placeholder' => 'Tarea Id']) }}
+                                        {{ Form::hidden('user_id',  auth()->user()->id, ['class' => 'form-control' . ($errors->has('tarea_id') ? ' is-invalid' : ''), 'placeholder' => 'Tarea Id']) }}
                                         
                                     </div>        
 

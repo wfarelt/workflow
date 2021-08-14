@@ -5,7 +5,8 @@
             {{ Form::label('Tipo de Tarea') }}
             {{ Form::select('workflow_tarea_id', $workflow_tareas, $tarea->workflow_tarea_id, ['class' => 'form-control' . ($errors->has('workflow_tarea_id') ? ' is-invalid' : ''), 'placeholder' => 'Seleccionar tarea']) }}
             {{ Form::text('descripcion', null, ['class' => 'form-control' . ($errors->has('descripcion') ? ' is-invalid' : ''), 'placeholder' => 'Descripcion']) }}
-
+            {{ Form::hidden('user_id',  auth()->user()->id, ['class' => 'form-control' . ($errors->has('tarea_id') ? ' is-invalid' : ''), 'placeholder' => 'Tarea Id']) }}
+            
             {!! $errors->first('workflow_tarea_id', '<div class="invalid-feedback">:message</p>') !!}
         </div>
 

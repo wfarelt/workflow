@@ -26,6 +26,7 @@ class TareaWorkflowEstado extends Model
 		'descripcion' => 'required',
 		'workflow_estado_id' => 'required',
 		'tarea_id' => 'required',
+        'user_id' => 'required',
     ];
 
     protected $perPage = 20;
@@ -35,7 +36,7 @@ class TareaWorkflowEstado extends Model
      *
      * @var array
      */
-    protected $fillable = ['descripcion','workflow_estado_id','tarea_id'];
+    protected $fillable = ['descripcion','workflow_estado_id','tarea_id','user_id'];
 
 
     /**
@@ -52,6 +53,11 @@ class TareaWorkflowEstado extends Model
     public function workflowEstado()
     {
         return $this->hasOne('App\Models\WorkflowEstado', 'id', 'workflow_estado_id');
+    }
+
+    public function user()
+    {
+        return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
     
 

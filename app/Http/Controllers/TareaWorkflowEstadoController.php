@@ -48,8 +48,6 @@ class TareaWorkflowEstadoController extends Controller
         
         request()->validate(TareaWorkflowEstado::$rules);
 
-
-
         $tareaWorkflowEstado = TareaWorkflowEstado::create($request->all());
 
         return redirect()->route('tareas.show', $request->tarea_id)
