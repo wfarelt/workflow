@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class WorkflowEstado
+ * Class Estado
  *
  * @property $id
  * @property $descripcion
@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class WorkflowEstado extends Model
+class Estado extends Model
 {
     
     static $rules = [
@@ -35,8 +35,8 @@ class WorkflowEstado extends Model
 
     public function tareas()
     {
-      return $this->belongsToMany('App\Models\Tarea','id', 'tarea_id');
-    }
+      return $this->belongsToMany('App\Models\Tarea');
+    } 
 
 
 }

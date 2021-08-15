@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Persona;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Storage;
@@ -29,7 +30,8 @@ class PersonaController extends Controller
     public function create()
     {
         //
-        return view('persona.create');
+        $users = User::pluck('name','id');
+        return view('persona.create', compact('users'));
     }
 
     /**
@@ -91,8 +93,9 @@ class PersonaController extends Controller
     public function edit($id)
     {
         //
+        $users = User::pluck('name','id');
         $persona = Persona::findOrFail($id);
-        return view('persona.edit', compact('persona'));
+        return view('persona.edit', compact('persona','users'));
     }
 
     /**

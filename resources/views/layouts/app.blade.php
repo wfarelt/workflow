@@ -55,8 +55,18 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('workflow-estados.index') }}">{{ __('Estados') }}</a>
                                 <a class="dropdown-item" href="{{ route('workflow-acciones.index') }}">{{ __('Acciones') }}</a>
-                                <a class="dropdown-item" href="{{ route('workflow-tareas.index') }}">{{ __('Tareas') }}</a>
+                                <a class="dropdown-item" href="{{ route('workflow-tareas.index') }}">{{ __('Tipos de tareas') }}</a>
                                 <a class="dropdown-item" href="{{ route('workflows.index') }}">{{ __('Workflows') }}</a>
+                                
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Tareas
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('tareas.index') }}">{{ __('Tareas') }}</a>
+                                <a class="dropdown-item" href="{{ route('tarea-workflow-estados.index') }}">{{ __('Tareas_WorkflowEstados') }}</a>
                                 
                             </div>
                         </li>
@@ -117,8 +127,8 @@
             </div>
         </nav>
 
-        <main class="py-4 bg-secondary">
-            <div class="container bg-light">
+        <main class="py-4 ">
+            <div class="container">
                 @yield('content')
             </div>
         </main>
