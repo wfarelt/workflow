@@ -14,6 +14,7 @@
 
     </div>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a class="btn btn-primary" href="{{ route('departamentos.index') }}"> Volver</a>
     </div>
 </div>

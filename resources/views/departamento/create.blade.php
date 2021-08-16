@@ -13,7 +13,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Create Departamento</span>
+                        <span class="card-title">Nuevo Departamento</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('departamentos.store') }}"  role="form" enctype="multipart/form-data">

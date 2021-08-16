@@ -13,7 +13,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Create Workflow Estado</span>
+                        <span class="card-title">Nuevo Workflow Estado</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('workflow-estados.store') }}"  role="form" enctype="multipart/form-data">
