@@ -28,8 +28,8 @@
 
     </div>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-success">Submit</button>
-        <a class="btn btn-primary" href="{{ route('workflows.index') }}"> Back</a>
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a class="btn btn-primary" href="{{ route('workflows.index') }}"> Volver</a>
     </div>
     
 </div>

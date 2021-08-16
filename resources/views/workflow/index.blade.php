@@ -7,7 +7,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-md-9">
                 <div class="card">
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -18,7 +18,7 @@
 
                              <div class="float-right">
                                 <a href="{{ route('workflows.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                  {{ __('Nuevo workflow') }}
                                 </a>
                               </div>
                         </div>
@@ -57,11 +57,11 @@
 
                                             <td>
                                                 <form action="{{ route('workflows.destroy',$workflow->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('workflows.show',$workflow->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('workflows.edit',$workflow->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('workflows.show',$workflow->id) }}"><i class="fa fa-fw fa-eye"></i> Ver</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('workflows.edit',$workflow->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Eliminar</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -70,9 +70,36 @@
                             </table>
                         </div>
                     </div>
+
                 </div>
                 {!! $workflows->links() !!}
             </div>
+            
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Estados Activos</h3>
+                    </div>
+                    <div class="card-body">
+                        @foreach ($workflow_estados as $workflow_estado)
+                            <p>{{$workflow_estado}}</p>
+                        @endforeach
+                    </div>
+                    
+                </div>
+                <br>
+                    <div class="card">
+                    <div class="card-header">
+                        <h3>Acciones Activos</h3>
+                    </div>
+                    <div class="card-body">
+                        @foreach ($workflow_acciones as $workflow_accione)
+                            <p>{{$workflow_accione}}</p>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 @endsection

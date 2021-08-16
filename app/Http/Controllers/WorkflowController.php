@@ -26,9 +26,11 @@ class WorkflowController extends Controller
     public function index()
     {
         $workflows = Workflow::paginate();
+        $workflow_estados = WorkflowEstado::pluck('descripcion','id');
+        $workflow_acciones = WorkflowAccione::pluck('descripcion','id');
         
 
-        return view('workflow.index', compact('workflows'))
+        return view('workflow.index', compact('workflows','workflow_estados','workflow_acciones'))
             ->with('i', (request()->input('page', 1) - 1) * $workflows->perPage());
     }
 

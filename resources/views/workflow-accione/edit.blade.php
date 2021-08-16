@@ -13,7 +13,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Update Workflow Accione</span>
+                        <span class="card-title">Actualizar Workflow Accione</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('workflow-acciones.update', $workflowAccione->id) }}"  role="form" enctype="multipart/form-data">

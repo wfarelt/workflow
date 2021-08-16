@@ -46,7 +46,7 @@
                             <td>{{ $persona->user->name }}</td>
                             <td>
                                 <a href="{{ url('/persona/'.$persona->id.'/edit')}}" class="btn btn-warning">
-                                    Edit
+                                    Editar
                                 </a>
                                 │
                                 <form action="{{ url ('/persona/'.$persona->id)}}" method="post" class="d-inline">
